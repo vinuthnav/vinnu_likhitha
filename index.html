@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For You 💗</title>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      overflow: hidden;
+      background: linear-gradient(135deg, #ffd6e8, #ffeef6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      text-align: center;
+      width: 85%;
+      max-width: 360px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+      position: relative;
+      z-index: 2;
+    }
+
+    h1 {
+      color: #ff4f81;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: #555;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 15px 0;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    }
+
+    .buttons {
+      margin-top: 22px;
+    }
+
+    button {
+      padding: 10px 22px;
+      border-radius: 20px;
+      border: none;
+      font-size: 15px;
+      cursor: pointer;
+      margin: 8px;
+    }
+
+    #yes {
+      background: #ff4f81;
+      color: white;
+    }
+
+    #no {
+      background: #f1f1f1;
+    }
+
+    #message {
+      margin-top: 15px;
+      color: #ff4f81;
+      min-height: 22px;
+    }
+
+    /* Floating hearts */
+    .heart {
+      position: absolute;
+      bottom: -20px;
+      font-size: 18px;
+      animation: floatUp linear infinite;
+      opacity: 0.7;
+    }
+
+    @keyframes floatUp {
+      from {
+        transform: translateY(0) scale(1);
+        opacity: 0.8;
+      }
+      to {
+        transform: translateY(-110vh) scale(1.4);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="card">
+  <h1>Dear Likhitha 💕</h1>
+
+  <img src="likhitha.jpg" alt="Likhitha">
+
+  <p>
+    Hope this changes your mind.<br>
+    You matter more than you think.
+  </p>
+
+  <p style="margin-top:15px;">
+    Will you smile for just one second?
+  </p>
+
+  <div class="buttons">
+    <button id="yes" onclick="location.href='yes.html'">Yes 😊</button>
+    <button id="no" onclick="handleNo()">No 😐</button>
+  </div>
+
+  <div id="message"></div>
+</div>
+
+<script>
+  const messages = [
+    "Hmm… that no looks suspicious 😌",
+    "I think you meant yes 💗",
+    "Just one tiny smile 🌸",
+    "This page likes you ✨",
+    "Okay but please? 🥺"
+  ];
+
+  let count = 0;
+  function handleNo() {
+    document.getElementById("message").innerText =
+      messages[count % messages.length];
+    count++;
+  }
+
+  function createHeart() {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerText = "💗";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (4 + Math.random() * 3) + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 7000);
+  }
+
+  setInterval(createHeart, 500);
+</script>
+
+</body>
+</html>
