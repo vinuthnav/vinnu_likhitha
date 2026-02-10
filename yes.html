@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>You 💖</title>
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+  background: radial-gradient(circle, #ffeef6, #ffd6e8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.box {
+  background: white;
+  padding: 36px;
+  border-radius: 28px;
+  text-align: center;
+  width: 85%;
+  max-width: 390px;
+  box-shadow: 0 20px 45px rgba(255,79,129,0.3);
+  animation: glow 2s ease-in-out infinite alternate;
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes glow {
+  from { box-shadow: 0 15px 30px rgba(255,79,129,0.25); }
+  to { box-shadow: 0 25px 55px rgba(255,79,129,0.45); }
+}
+
+h2 {
+  color: #ff4f81;
+}
+
+p {
+  color: #555;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.confetti {
+  position: absolute;
+  font-size: 18px;
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  from { transform: translateY(-10vh) rotate(0deg); opacity:1 }
+  to { transform: translateY(110vh) rotate(360deg); opacity:0 }
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+  <h2>There it is 💕</h2>
+  <p>
+    That smile just changed the whole vibe ✨<br>
+    Please keep it.
+  </p>
+  <p>
+    Just so you know —<br>
+    you’re deeply special.
+  </p>
+  <p style="margin-top:20px;">🌸🤍💗</p>
+</div>
+
+<script>
+function confetti() {
+  const c = document.createElement("div");
+  c.className = "confetti";
+  c.innerText = ["💖","✨","🌸","💗"][Math.floor(Math.random()*4)];
+  c.style.left = Math.random()*100 + "vw";
+  c.style.animationDuration = (3 + Math.random()*3) + "s";
+  document.body.appendChild(c);
+  setTimeout(() => c.remove(), 6000);
+}
+setInterval(confetti, 250);
+</script>
+
+</body>
+</html>
